@@ -18,7 +18,7 @@
 
 ```bash
 # 저장소 클론
-git clone <repository-url>
+git clone https://github.com/dev-jaekkim/CursorBeginner.git
 cd CursorBeginner
 
 # 의존성 설치
@@ -132,4 +132,3 @@ Vercel 대시보드의 프로젝트 설정에서 다음 환경 변수를 추가�
 - [카카오맵 API 문서](https://apis.map.kakao.com)
 - [Supabase 문서](https://supabase.com/docs)
 - [Tailwind CSS 문서](https://tailwindcss.com/docs)
-
