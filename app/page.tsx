@@ -12,7 +12,6 @@ import ParkingListSkeleton from '@/app/components/ParkingListSkeleton';
 import SearchBar from '@/app/components/SearchBar';
 import SortOptions from '@/app/components/SortOptions';
 import ViewToggle from '@/app/components/ViewToggle';
-
 import type { ParkingLot, SortOption } from '@/app/lib/types';
 import { getErrorType, formatErrorMessage } from '@/app/lib/error-utils';
 import { getFavoriteParkingLots, getFavorites } from '@/app/lib/favorites-utils';
