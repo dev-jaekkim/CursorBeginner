@@ -88,7 +88,7 @@ export function calculateOneHourFee(lot: ParkingLot): number {
 function isHoliday(date: Date): boolean {
   const month = date.getMonth() + 1; // 1-12
   const day = date.getDate();
-  const year = date.getFullYear();
+  // const year = date.getFullYear(); // 사용하지 않는 변수 제거
 
   // 고정 공휴일
   const fixedHolidays: Array<[number, number]> = [

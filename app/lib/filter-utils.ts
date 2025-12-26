@@ -1,8 +1,7 @@
 import type { FilterOptions } from '@/app/components/FilterPanel';
+import type { ParkingLot } from './types';
 
 import { isCurrentlyAvailable } from './utils';
-
-import type { ParkingLot } from './types';
 
 /**
  * 운영 시간 필터링
@@ -17,7 +16,7 @@ function filterByOperatingHours(
   }
 
   const now = new Date();
-  const currentTime = now.getHours() * 100 + now.getMinutes();
+  // const currentTime = now.getHours() * 100 + now.getMinutes(); // 사용하지 않는 변수 제거
 
   switch (operatingHours) {
     case '24h':

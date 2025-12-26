@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import type { ParkingLot, SortOption } from '@/app/lib/types';
 import { supabase } from '@/app/lib/supabase';
 import {
   calculateDistance,
@@ -7,8 +8,6 @@ import {
   isCurrentlyAvailable,
   sortParkingLots,
 } from '@/app/lib/utils';
-
-import type { ParkingLot, SortOption } from '@/app/lib/types';
 
 export async function GET(request: NextRequest) {
   try {
