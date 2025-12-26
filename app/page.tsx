@@ -22,12 +22,6 @@ import { getFavoriteParkingLots, getFavorites } from '@/app/lib/favorites-utils'
 const Map = lazy(() => import('@/app/components/Map'));
 const ParkingInfo = lazy(() => import('@/app/components/ParkingInfo'));
 const FilterPanel = lazy(() => import('@/app/components/FilterPanel'));
-import type { ParkingLot, SortOption } from '@/app/lib/types';
-import { getUserLocation, DEFAULT_LOCATION } from '@/app/lib/utils';
-import { useDebounce } from '@/app/lib/hooks/useDebounce';
-import { getErrorType, formatErrorMessage } from '@/app/lib/error-utils';
-import { filterParkingLots } from '@/app/lib/filter-utils';
-import { getFavoriteParkingLots, getFavorites } from '@/app/lib/favorites-utils';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
