@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { supabase } from '@/app/lib/supabase';
-
 import type { ParkingLot } from '@/app/lib/types';
+import { supabase } from '@/app/lib/supabase';
 
 const EXTERNAL_API_BASE_URL = process.env.EXTERNAL_API_BASE_URL || 'http://115.84.165.40';
 
@@ -112,7 +111,7 @@ export async function POST(_request: NextRequest) {
     }
 
     // Supabase insert 시 id 제외 (자동 생성됨)
-    const parkingLotsWithoutId = parkingLots.map(({ id, ...rest }) => rest);
+    const parkingLotsWithoutId = parkingLots.map(({ id: _id, ...rest }) => rest);
 
     const { data: insertedData, error: insertError } = await supabase
       .from('parking_lots')
