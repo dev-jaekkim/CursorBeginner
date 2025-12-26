@@ -107,9 +107,12 @@ export async function POST(_request: NextRequest) {
       // 삭제 실패해도 계속 진행 (새 데이터 삽입 시도)
     }
 
+    // Supabase insert 시 id 제외 (자동 생성됨)
+    const parkingLotsWithoutId = parkingLots.map(({ id, ...rest }) => rest);
+
     const { data: insertedData, error: insertError } = await supabase
       .from('parking_lots')
-      .insert(parkingLots)
+      .insert(parkingLotsWithoutId)
       .select();
 
     if (insertError) {
@@ -288,6 +291,7 @@ function transformData(apiData: any): ParkingLot[] {
           }
 
           return {
+            id: 0, // 임시 ID (Supabase에서 자동 생성됨)
             name: name.trim(),
             address: address?.trim() || undefined,
             latitude: latitude && !isNaN(latitude) ? latitude : undefined,
