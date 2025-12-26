@@ -1,7 +1,9 @@
 'use client';
 
 import { memo } from 'react';
+
 import type { ParkingLot } from '@/app/lib/types';
+
 import FavoriteButton from './FavoriteButton';
 
 interface ParkingInfoProps {
@@ -11,12 +13,16 @@ interface ParkingInfoProps {
 
 // HHMM 형식을 HH:MM 형식으로 변환
 function formatTime(timeStr: string): string {
-  if (!timeStr || timeStr.length !== 4) return timeStr;
+  if (!timeStr || timeStr.length !== 4) {
+    return timeStr;
+  }
   return `${timeStr.substring(0, 2)}:${timeStr.substring(2, 4)}`;
 }
 
 function ParkingInfo({ parkingLot, onClose }: ParkingInfoProps) {
-  if (!parkingLot) return null;
+  if (!parkingLot) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col bg-white p-4 sm:p-5 border-l-4 border-blue-500">

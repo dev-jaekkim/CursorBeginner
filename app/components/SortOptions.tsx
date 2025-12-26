@@ -1,6 +1,7 @@
 'use client';
 
 import { memo } from 'react';
+
 import type { SortOption } from '@/app/lib/types';
 
 interface SortOptionsProps {

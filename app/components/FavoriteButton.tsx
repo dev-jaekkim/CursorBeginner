@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+
 import {
   isFavorite,
   toggleFavorite,
-  getFavorites,
 } from '@/app/lib/favorites-utils';
 
 interface FavoriteButtonProps {

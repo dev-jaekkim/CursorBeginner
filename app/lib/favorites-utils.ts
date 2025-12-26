@@ -6,11 +6,15 @@ const FAVORITES_STORAGE_KEY = 'parking_favorites';
  * 로컬 스토리지에서 즐겨찾기 목록 가져오기
  */
 export function getFavorites(): number[] {
-  if (typeof window === 'undefined') return [];
+  if (typeof window === 'undefined') {
+    return [];
+  }
   
   try {
     const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
-    if (!stored) return [];
+    if (!stored) {
+      return [];
+    }
     return JSON.parse(stored);
   } catch (error) {
     console.error('즐겨찾기 로드 실패:', error);
@@ -22,7 +26,9 @@ export function getFavorites(): number[] {
  * 즐겨찾기 변경 이벤트 발생
  */
 function notifyFavoritesChange(): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined') {
+    return;
+  }
   // 같은 탭에서의 변경을 감지하기 위한 커스텀 이벤트
   window.dispatchEvent(new Event('favoritesUpdated'));
 }
@@ -31,7 +37,9 @@ function notifyFavoritesChange(): void {
  * 즐겨찾기 추가
  */
 export function addFavorite(parkingId: number): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined') {
+    return;
+  }
   
   try {
     const favorites = getFavorites();
@@ -49,7 +57,9 @@ export function addFavorite(parkingId: number): void {
  * 즐겨찾기 제거
  */
 export function removeFavorite(parkingId: number): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined') {
+    return;
+  }
   
   try {
     const favorites = getFavorites();

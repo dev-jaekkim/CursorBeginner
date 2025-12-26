@@ -197,8 +197,12 @@ export function sortParkingLots(
     case 'distance':
       if (userLat && userLng) {
         return sorted.sort((a, b) => {
-          if (!a.latitude || !a.longitude) return 1;
-          if (!b.latitude || !b.longitude) return -1;
+          if (!a.latitude || !a.longitude) {
+            return 1;
+          }
+          if (!b.latitude || !b.longitude) {
+            return -1;
+          }
           const distA = calculateDistance(
             userLat,
             userLng,

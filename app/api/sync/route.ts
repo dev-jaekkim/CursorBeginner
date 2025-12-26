@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
+
 import { supabase } from '@/app/lib/supabase';
+
 import type { ParkingLot } from '@/app/lib/types';
 
 const EXTERNAL_API_BASE_URL = process.env.EXTERNAL_API_BASE_URL || 'http://115.84.165.40';
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     const apiUrl = `${EXTERNAL_API_BASE_URL}/dataList/OA-13122/S/1/datasetView.do`;
     console.log('=== 외부 API 호출 시작 ===');
@@ -24,7 +26,7 @@ export async function POST(request: NextRequest) {
         // 타임아웃 설정 (30초)
         signal: AbortSignal.timeout(30000),
         // SSL 검증 우회 (개발 환경에서만, 프로덕션에서는 사용하지 마세요)
-        // @ts-ignore
+        // @ts-expect-error - SSL 검증 우회 옵션
         rejectUnauthorized: false,
       });
     } catch (fetchError: any) {

@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
+
 import { supabase } from '@/app/lib/supabase';
-import type { ParkingLot } from '@/app/lib/types';
 import {
   calculateDistance,
   calculateOneHourFee,
   isCurrentlyAvailable,
 } from '@/app/lib/utils';
+
+import type { ParkingLot } from '@/app/lib/types';
 
 interface RouteParams {
   params: {
@@ -71,7 +73,7 @@ export async function GET(
       );
     }
 
-    let parkingLot: ParkingLot = data as ParkingLot;
+    const parkingLot: ParkingLot = data as ParkingLot;
 
     // 좌표를 숫자로 변환 (Supabase DECIMAL이 문자열로 반환될 수 있음)
     const latitude = parkingLot.latitude 

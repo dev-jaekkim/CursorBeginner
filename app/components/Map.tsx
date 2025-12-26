@@ -1,9 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState, memo } from 'react';
+
 import { loadKakaoMapScript } from '@/app/lib/kakao-map';
-import type { ParkingLot } from '@/app/lib/types';
 import { getMarkerImageForParkingLot } from '@/app/lib/marker-utils';
+
+import type { ParkingLot } from '@/app/lib/types';
+
 import MapLegend from './MapLegend';
 
 interface MapProps {
@@ -63,7 +66,9 @@ function Map({
 
   // 지도 중심 이동 (초기 위치 설정)
   useEffect(() => {
-    if (!isLoaded || !mapInstanceRef.current || !center) return;
+    if (!isLoaded || !mapInstanceRef.current || !center) {
+      return;
+    }
 
     const mapCenter = new window.kakao.maps.LatLng(center.lat, center.lng);
     mapInstanceRef.current.setCenter(mapCenter);
@@ -72,7 +77,9 @@ function Map({
   // 선택된 주차장 위치로 지도 이동 (부드러운 애니메이션)
   // 마커를 지도의 2/3 지점에 위치시킴 (상세 정보 팝업 때문에 가려지지 않도록)
   useEffect(() => {
-    if (!isLoaded || !mapInstanceRef.current || !selectedLocation) return;
+    if (!isLoaded || !mapInstanceRef.current || !selectedLocation) {
+      return;
+    }
 
     try {
       // 유효한 좌표인지 확인
@@ -133,7 +140,7 @@ function Map({
       selectedMarkerRef.current = null;
     }
 
-    let markerCount = 0;
+    // let markerCount = 0; // 사용하지 않는 변수 제거
 
     // 새로운 마커 추가 (좌표가 유효한 경우에만)
     parkingLots.forEach((lot) => {
@@ -192,7 +199,7 @@ function Map({
 
         marker.setMap(mapInstanceRef.current);
         markersRef.current.push(marker);
-        markerCount++;
+        // markerCount++; // 사용하지 않는 변수 제거
       } catch (error) {
         // 마커 생성 실패는 조용히 처리 (개발 모드에서만 로그)
         if (process.env.NODE_ENV === 'development') {

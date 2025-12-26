@@ -15,10 +15,10 @@ interface FilterPanelProps {
   onClose?: () => void;
 }
 
-export default function FilterPanel({ filters, onFiltersChange, onClose }: FilterPanelProps) {
+export default function FilterPanel({ filters, onFiltersChange, onClose: _onClose }: FilterPanelProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleFilterChange = (key: keyof FilterOptions, value: any) => {
+  const handleFilterChange = (key: keyof FilterOptions, value: unknown) => {
     onFiltersChange({
       ...filters,
       [key]: value,

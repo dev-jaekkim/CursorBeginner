@@ -1,6 +1,8 @@
-import type { ParkingLot } from './types';
 import type { FilterOptions } from '@/app/components/FilterPanel';
+
 import { isCurrentlyAvailable } from './utils';
+
+import type { ParkingLot } from './types';
 
 /**
  * 운영 시간 필터링
@@ -10,7 +12,9 @@ function filterByOperatingHours(
   lot: ParkingLot,
   operatingHours: FilterOptions['operatingHours']
 ): boolean {
-  if (operatingHours === 'all') return true;
+  if (operatingHours === 'all') {
+    return true;
+  }
 
   const now = new Date();
   const currentTime = now.getHours() * 100 + now.getMinutes();
@@ -44,7 +48,9 @@ function filterByOperatingHours(
  * 주차 대수 필터링
  */
 function filterByCapacity(lot: ParkingLot, minCapacity?: number): boolean {
-  if (!minCapacity) return true;
+  if (!minCapacity) {
+    return true;
+  }
   return (lot.total_parking_spaces || 0) >= minCapacity;
 }
 
@@ -55,7 +61,9 @@ function filterByPaidFreeType(
   lot: ParkingLot,
   paidFreeType: FilterOptions['paidFreeType']
 ): boolean {
-  if (paidFreeType === 'all') return true;
+  if (paidFreeType === 'all') {
+    return true;
+  }
 
   const isFree =
     lot.paid_free_type === '무료' || lot.paid_free_type_name === '무료' || lot.oneHourFee === 0;
@@ -73,7 +81,9 @@ function filterByPaidFreeType(
  * 주차장 종류 필터링
  */
 function filterByParkingType(lot: ParkingLot, parkingType: FilterOptions['parkingType']): boolean {
-  if (parkingType === 'all') return true;
+  if (parkingType === 'all') {
+    return true;
+  }
   return lot.parking_type_name === parkingType;
 }
 

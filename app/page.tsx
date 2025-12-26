@@ -1,22 +1,26 @@
 'use client';
 
 import { useState, useMemo, useEffect, useCallback, lazy, Suspense } from 'react';
+
+import AvailableToggle from '@/app/components/AvailableToggle';
+import ErrorMessage from '@/app/components/ErrorMessage';
+import FavoritesToggle from '@/app/components/FavoritesToggle';
 import MapSkeleton from '@/app/components/MapSkeleton';
 import ParkingList from '@/app/components/ParkingList';
 import ParkingListSkeleton from '@/app/components/ParkingListSkeleton';
 import SearchBar from '@/app/components/SearchBar';
 import SortOptions from '@/app/components/SortOptions';
-import AvailableToggle from '@/app/components/AvailableToggle';
-import FavoritesToggle from '@/app/components/FavoritesToggle';
-import ErrorMessage from '@/app/components/ErrorMessage';
 import ViewToggle from '@/app/components/ViewToggle';
+
 import type { FilterOptions } from '@/app/components/FilterPanel';
-import type { ParkingLot, SortOption } from '@/app/lib/types';
-import { getUserLocation, DEFAULT_LOCATION } from '@/app/lib/utils';
-import { useDebounce } from '@/app/lib/hooks/useDebounce';
+
 import { getErrorType, formatErrorMessage } from '@/app/lib/error-utils';
-import { filterParkingLots } from '@/app/lib/filter-utils';
 import { getFavoriteParkingLots, getFavorites } from '@/app/lib/favorites-utils';
+import { filterParkingLots } from '@/app/lib/filter-utils';
+import { useDebounce } from '@/app/lib/hooks/useDebounce';
+import { getUserLocation } from '@/app/lib/utils';
+
+import type { ParkingLot, SortOption } from '@/app/lib/types';
 
 // 코드 스플리팅: 큰 컴포넌트들을 lazy loading
 const Map = lazy(() => import('@/app/components/Map'));
@@ -142,7 +146,9 @@ export default function Home() {
   // debouncedSearchTerm을 사용하여 검색 최적화
   useEffect(() => {
     const loadData = async () => {
-      if (!userLocation) return;
+      if (!userLocation) {
+        return;
+      }
 
       try {
         setLoading(true);

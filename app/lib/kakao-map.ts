@@ -82,7 +82,7 @@ export const loadKakaoMapScript = (apiKey: string): Promise<void> => {
       }
     };
     
-    script.onerror = (error) => {
+    script.onerror = (_error) => {
       clearTimeout(timeoutId);
       
       // 더 자세한 에러 메시지
