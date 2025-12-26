@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import type { ParkingLot } from '@/app/lib/types';
 import { supabase } from '@/app/lib/supabase';
+
+import type { ParkingLot } from '@/app/lib/types';
 
 const EXTERNAL_API_BASE_URL = process.env.EXTERNAL_API_BASE_URL || 'http://115.84.165.40';
 

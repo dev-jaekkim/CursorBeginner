@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import type { ParkingLot, SortOption } from '@/app/lib/types';
 import { supabase } from '@/app/lib/supabase';
-import { calculateDistance, calculateOneHourFee, isCurrentlyAvailable, sortParkingLots } from '@/app/lib/utils';
+import {
+  calculateDistance,
+  calculateOneHourFee,
+  isCurrentlyAvailable,
+  sortParkingLots,
+} from '@/app/lib/utils';
+
+import type { ParkingLot, SortOption } from '@/app/lib/types';
 
 export async function GET(request: NextRequest) {
   try {
@@ -96,26 +102,17 @@ export async function GET(request: NextRequest) {
     // 디버깅: 위도/경도가 있는 주차장 개수 확인
     const withCoordinates = parkingLots.filter((lot) => {
       const lat =
-        typeof lot.latitude === 'number'
-          ? lot.latitude
-          : parseFloat(String(lot.latitude || ''));
+        typeof lot.latitude === 'number' ? lot.latitude : parseFloat(String(lot.latitude || ''));
       const lng =
-        typeof lot.longitude === 'number'
-          ? lot.longitude
-          : parseFloat(String(lot.longitude || ''));
+        typeof lot.longitude === 'number' ? lot.longitude : parseFloat(String(lot.longitude || ''));
 
-      return (
-        !isNaN(lat) &&
-        !isNaN(lng) &&
-        lat >= -90 &&
-        lat <= 90 &&
-        lng >= -180 &&
-        lng <= 180
-      );
+      return !isNaN(lat) && !isNaN(lng) && lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
     }).length;
 
     if (process.env.NODE_ENV === 'development') {
-      console.log(`[API] 위도/경도가 있는 주차장: ${withCoordinates}개 / 전체: ${parkingLots.length}개`);
+      console.log(
+        `[API] 위도/경도가 있는 주차장: ${withCoordinates}개 / 전체: ${parkingLots.length}개`
+      );
     }
 
     return NextResponse.json({ data: parkingLots });
