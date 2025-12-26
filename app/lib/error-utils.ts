@@ -11,7 +11,7 @@ export type ErrorType =
 /**
  * 에러 메시지에서 에러 타입을 판별합니다.
  */
-export function getErrorType(error: string | Error): ErrorType {
+export function getErrorType(error: string | Error | unknown): ErrorType {
   const errorMessage = error instanceof Error ? error.message : String(error);
   const lowerMessage = errorMessage.toLowerCase();
 
@@ -53,8 +53,8 @@ export function getErrorType(error: string | Error): ErrorType {
 /**
  * 에러 메시지를 사용자 친화적으로 변환합니다.
  */
-export function formatErrorMessage(error: string | Error): string {
-  const errorMessage = error instanceof Error ? error.message : String(error);
+export function formatErrorMessage(error: string | Error | unknown): string {
+  const errorMessage = error instanceof Error ? error.message : typeof error === 'string' ? error : String(error);
   
   // 너무 긴 에러 메시지는 축약
   if (errorMessage.length > 200) {
