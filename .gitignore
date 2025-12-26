@@ -4,7 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-.yarn/install-state.gz
 
 # testing
 /coverage
@@ -39,11 +38,16 @@ next-env.d.ts
 # IDE
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 
-# OS
-.DS_Store
-Thumbs.db
+# Data files (large CSV files)
+/data/
+!/data/.gitkeep
 
+# Database files (SQL scripts - personal/private)
+/database/
+
+# Documentation files (personal notes)
+/docs/
+
+# Scripts (optional - if you want to keep them in git)
+# /scripts/*.py
