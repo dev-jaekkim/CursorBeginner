@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import type { ParkingLot } from '@/app/lib/types';
 import { supabase } from '@/app/lib/supabase';
 import { calculateDistance, calculateOneHourFee, isCurrentlyAvailable } from '@/app/lib/utils';
-
-import type { ParkingLot } from '@/app/lib/types';
 
 interface RouteParams {
   params: {
