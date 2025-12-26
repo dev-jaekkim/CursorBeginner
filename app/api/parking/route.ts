@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import type { ParkingLot, SortOption } from '@/app/lib/types';
 import { supabase } from '@/app/lib/supabase';
 import {
   calculateDistance,
@@ -8,6 +7,8 @@ import {
   isCurrentlyAvailable,
   sortParkingLots,
 } from '@/app/lib/utils';
+
+import type { ParkingLot, SortOption } from '@/app/lib/types';
 
 // API 라우트를 동적으로 렌더링하도록 명시
 export const dynamic = 'force-dynamic';
