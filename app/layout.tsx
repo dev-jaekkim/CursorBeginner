@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-
 import "./globals.css";
 
 import ErrorBoundary from "./components/ErrorBoundary";
+
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "서울시 공영주차장 안내",
