@@ -1,7 +1,8 @@
-import type { FilterOptions } from '@/app/components/FilterPanel';
+import { isCurrentlyAvailable } from './utils';
 
 import type { ParkingLot } from './types';
-import { isCurrentlyAvailable } from './utils';
+import type { FilterOptions } from '@/app/components/FilterPanel';
+
 
 /**
  * 운영 시간 필터링

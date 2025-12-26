@@ -2,9 +2,10 @@
 
 import { memo } from 'react';
 
+import FavoriteButton from './FavoriteButton';
+
 import type { ParkingLot } from '@/app/lib/types';
 
-import FavoriteButton from './FavoriteButton';
 
 interface ParkingInfoProps {
   parkingLot: ParkingLot | null;
