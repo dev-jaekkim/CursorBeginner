@@ -2,9 +2,11 @@
 
 import { useEffect, useRef, useState, memo } from 'react';
 
-import type { ParkingLot } from '@/app/lib/types';
 import { loadKakaoMapScript } from '@/app/lib/kakao-map';
 import { getMarkerImageForParkingLot } from '@/app/lib/marker-utils';
+
+import type { ParkingLot } from '@/app/lib/types';
+
 import MapLegend from './MapLegend';
 
 interface MapProps {

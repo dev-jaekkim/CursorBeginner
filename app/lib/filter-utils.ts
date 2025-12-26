@@ -1,6 +1,5 @@
 import type { FilterOptions } from '@/app/components/FilterPanel';
 import type { ParkingLot } from './types';
-
 import { isCurrentlyAvailable } from './utils';
 
 /**

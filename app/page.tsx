@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useEffect, useCallback, lazy, Suspense } from 'react';
 
-import type { FilterOptions } from '@/app/components/FilterPanel';
 import AvailableToggle from '@/app/components/AvailableToggle';
 import ErrorMessage from '@/app/components/ErrorMessage';
 import FavoritesToggle from '@/app/components/FavoritesToggle';
@@ -12,12 +11,14 @@ import ParkingListSkeleton from '@/app/components/ParkingListSkeleton';
 import SearchBar from '@/app/components/SearchBar';
 import SortOptions from '@/app/components/SortOptions';
 import ViewToggle from '@/app/components/ViewToggle';
-import type { ParkingLot, SortOption } from '@/app/lib/types';
 import { getErrorType, formatErrorMessage } from '@/app/lib/error-utils';
 import { getFavoriteParkingLots, getFavorites } from '@/app/lib/favorites-utils';
 import { filterParkingLots } from '@/app/lib/filter-utils';
 import { useDebounce } from '@/app/lib/hooks/useDebounce';
 import { getUserLocation } from '@/app/lib/utils';
+
+import type { FilterOptions } from '@/app/components/FilterPanel';
+import type { ParkingLot, SortOption } from '@/app/lib/types';
 
 // 코드 스플리팅: 큰 컴포넌트들을 lazy loading
 const Map = lazy(() => import('@/app/components/Map'));
